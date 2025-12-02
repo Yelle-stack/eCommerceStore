@@ -1,6 +1,7 @@
 # 🛍️ Boutique Web – Projet Front-End
 Un projet front-end moderne présentant une boutique en ligne dynamique,</ br> développé en JavaScript, HTML, CSS et intégrant une interface utilisateur</ br> complète et responsive. L’application inclut un système de panier, un affichage des produits filtrables,</ br> ainsi qu’un début d’intégration Stripe Checkout pour la gestion des paiements.
 
+![image alt](https://github.com/Yelle-stack/eCommerceStore/blob/e42f9dd0b9df388c1c1b372c6a2812b9302ce1a5/portfolio.png)
 ## 🚀 Fonctionnalités principales
 🧩 Gestion des produits
 
