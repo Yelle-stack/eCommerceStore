@@ -131,12 +131,22 @@ function showToast(message) {
 // --- Filter Products by Category ---
 function filterProducts(category) {
     const products = document.querySelectorAll('.product');
+
     products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) product.style.display = 'block';
-        else product.style.display = 'none';
+        if (category === 'all' || product.dataset.category === category) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
     });
+
     const productsSection = document.getElementById('products');
-    if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
+
+    if (productsSection) {
+        productsSection.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 }
 
 
