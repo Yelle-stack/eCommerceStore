@@ -6,7 +6,7 @@ function addToCart(productCard) {
     const name = productCard.querySelector(".product-title").textContent;
     const priceText = productCard.querySelector(".product-price").textContent;
     const price = parseFloat(priceText.replace("$", ""));
-    const imgSrc = productCard.querySelector(".product-img").src;
+    const imgSrc = productCard.querySelector(".product-img").getAttribute("src");
 
     const existingItem = cartItems.find((item) => item.name === name);
     if (existingItem) {
