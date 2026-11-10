@@ -10,12 +10,12 @@ const PORT = process.env.PORT || 3000;
 // Public address of the site (set BASE_URL in .env locally and on Vercel)
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
-if (!process.env.stripe_key) {
-    console.error("Missing stripe_key in the .env file");
+if (!process.env.STRIPE_SECRET_KEY) {
+    console.error("Missing STRIPE_SECRET_KEY in the .env file");
     process.exit(1);
 }
 
-const stripeGateway = Stripe(process.env.stripe_key);
+const stripeGateway = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Products: the prices are defined HERE, never taken from the browser.
 // The names must match the product titles in index.html.
