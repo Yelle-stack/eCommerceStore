@@ -1,66 +1,121 @@
-# 🛍️ Boutique Web – Projet Front-End
-Un projet front-end moderne présentant une boutique en ligne dynamique,</ br> développé en JavaScript, HTML, CSS et intégrant une interface utilisateur</ br> complète et responsive. L’application inclut un système de panier, un affichage des produits filtrables,</ br> ainsi qu’un début d’intégration Stripe Checkout pour la gestion des paiements.
+# 🛍️ Luvarte — Full-Stack E-Commerce Store
 
-![image alt](https://github.com/Yelle-stack/eCommerceStore/blob/e42f9dd0b9df388c1c1b372c6a2812b9302ce1a5/portfolio.png)
-## 🚀 Fonctionnalités principales
-🧩 Gestion des produits
+A clothing store built with a vanilla JavaScript frontend and a Node.js / Express backend, with payments handled by **Stripe Checkout** (test mode).
 
-Affichage dynamique de la liste des produits.
+🌐 **[Live demo](https://e-commerce-store-pi-liard.vercel.app)**
 
-Filtrage par marque / catégorie.
+![Luvarte store](portfolio.png)
 
-Mise en avant des produits via des cartes visuelles.
+> This is a demo project. Stripe runs in **test mode**: no real payment is possible.
 
-## 🛒 Panier interactif
-Ajout / suppression de produits.
+---
 
-Mise à jour automatique des quantités.
+## ✨ Features
 
-Recalcul du total en temps réel.
+**Shop**
+- Product catalog with category filters (Shirts & Tops, Outwear, Caps, All Products)
+- "Add to cart" with toast notifications
 
-Affichage du panier dans une sidebar responsive.
+**Cart**
+- Add, remove and change quantities
+- Live total and item counter in the header
+- Cart saved in the browser (`localStorage`)
 
-## 💳 Paiement (Stripe – côté front)
-Préparation de la session Stripe Checkout.
-Envoi des items du panier au backend 
-Redirection vers la plateforme de paiement
+**Checkout**
+- Stripe Checkout payment page
+- The server **recalculates the prices itself**: the browser only sends product names and quantities, so prices cannot be tampered with
+- Success and cancel pages
 
-## 🎨 UI & Composants
-L’application présente plusieurs sections clés :
+**Design**
+- Responsive layout with a mobile menu
+- Custom favicon
 
-Navbar : menu responsive avec ouverture mobile.
+## 🛠️ Tech Stack
 
-CTA : section d’appel à l’action avec Button réutilisable.
+| Frontend | Backend | Payments & hosting |
+|---|---|---|
+| HTML5 | Node.js | Stripe Checkout |
+| CSS3 (Grid, Flexbox, variables) | Express 5 | Vercel |
+| JavaScript (ES6+) | dotenv | |
 
-CardDeal : présentation d’offres / services.
+## 🔄 How the checkout works
 
-Clients : logos partenaires.
+1. The cart is stored in the browser.
+2. On **Checkout**, the browser sends the product names and quantities to `POST /stripe-checkout`.
+3. The server looks up each price in its own product list and creates a Stripe session.
+4. The customer is redirected to Stripe, then back to the success or cancel page.
 
-Stats : chiffres clés en mise en forme moderne.
+## 🚀 Run it locally
 
-Feedback / Testimonials : avis clients stylisés.
+**1. Clone the project and install the dependencies**
 
-Footer : liens rapides, réseaux sociaux et informations générales.
-
-## 📱 Responsive design
-Mise en page fluide et adaptative.
-
-## 🛠️ Technologies utilisées
-HTML5 / CSS3 / JavaScript (ES6+)
-
-React (pour certaines versions du projet)
-
-Figma (maquettes)
-
-Stripe Checkout (partiellement intégré)
-
-JSON / REST Fetch API
-
-## 📦 Installation & lancement
-### Clone le projet :
-git clone https://github.com/mon-projet.git
-cd mon-projet
-
-### Lance un serveur local (exemple avec Live Server ou Vite) :
+```bash
+git clone https://github.com/Yelle-stack/eCommerceStore.git
+cd eCommerceStore
 npm install
+```
+
+**2. Create a `.env` file** in the project root with your Stripe **test** secret key (from the Stripe dashboard, in test mode):
+
+```
+STRIPE_SECRET_KEY=sk_test_your_key_here
+BASE_URL=http://localhost:3000
+```
+
+Never commit this file: it is already listed in `.gitignore`.
+
+**3. Start the server**
+
+```bash
 npm run dev
+```
+
+Then open http://localhost:3000.
+
+**4. Pay with a Stripe test card**
+
+| Field | Value |
+|---|---|
+| Card number | `4242 4242 4242 4242` |
+| Expiry date | any future date |
+| CVC / postal code | any value |
+
+## 📁 Project structure
+
+```
+├── public/
+│   ├── css/style.css
+│   ├── js/            # main.js (cart), cart.js (checkout), menu.js
+│   ├── images/
+│   ├── index.html
+│   ├── cart.html
+│   ├── success.html
+│   ├── cancel.html
+│   └── favicon.svg / favicon.png
+├── server.js          # Express server and Stripe route
+├── package.json
+└── .env               # not committed
+```
+
+## ☁️ Deployment
+
+The project is deployed on **Vercel**. Add two environment variables in the project settings:
+
+- `STRIPE_SECRET_KEY`: your Stripe secret key
+- `BASE_URL`: the public address of the site, without a trailing slash
+
+## 🔮 Possible improvements
+
+- Store the products in a database (MongoDB) instead of the server file
+- Stripe webhook to save paid orders
+- Shipping address collection and order history
+- Euro currency and legal pages for a real shop
+
+## 🎨 Credits
+
+Product images are used for demonstration purposes only. Add the credits for your images and fonts here (Antonio font from Google Fonts, icons from Remix Icon).
+
+## 👩🏻‍💻 Author
+
+**Jelena Zeko** – Full-Stack Developer
+GitHub: [@Yelle-stack](https://github.com/Yelle-stack)
