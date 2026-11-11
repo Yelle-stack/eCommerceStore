@@ -35,10 +35,10 @@ app.use(express.json());
 
 // Routes
 app.get("/", (req, res) => {
-    res.sendFile("index.html", { root: "public" });
+    res.redirect("/index.html");
 });
 app.get("/cart", (req, res) => {
-    res.sendFile("cart.html", { root: "public" });
+    res.redirect("/cart.html");
 });
 
 // Stripe
